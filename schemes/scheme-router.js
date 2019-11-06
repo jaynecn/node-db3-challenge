@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id',  (req, res) => {
   const { id } = req.params;
 
   Schemes.findById(id)
@@ -115,5 +115,23 @@ router.delete('/:id', (req, res) => {
     res.status(500).json({ message: 'Failed to delete scheme' });
   });
 });
+
+// MIDDLEWARE
+// function validateSchemeId(req, res, next) {
+//   Scheme.findById(req.params.id)
+//   .then(data => {
+//     if (data) {
+//       console.log(data);
+//       next()
+//     } else {
+//       res.status(400).json({ message: 'invalid scheme id' });
+//     }
+//   })
+//   .catch(error => {
+//     res.status(500).json({
+//       message: 'There has been an error' + error.message,
+//     });
+//   });
+// }
 
 module.exports = router;
